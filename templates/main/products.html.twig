@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product{% endblock %}
+
+{% block body %}
+    <section id="offer" style="box-shadow: 0px 0px 10px 0px  rgba(0,0,0,0.5); height: 450px; margin: 20% 0; ">
+        {% for product in products %}
+        <div style="background-color: darkgray !important; margin: 20px 0; border-radius: 10px; height: 200px; padding: 10px 20px; width: 60%">
+            <h2 style="width: 60%">{{ product.getName() }}</h2>
+            <div class="productRow">
+                <article class="productInfo" style="width: 60%"> <!-- Each individual product description -->
+                    <p class="price">{{ product.getDescription() }}</p>
+                    <p class="price">{{ product.getPrice() }}$</p>
+                    <form action="/delfromcart" method="post">
+                        <input name="pid" type="number" value="{{ product.getId() }}" style="display: none"/>
+                        <input type="submit" type="button" value="Delete From Cart" class="buyButton">
+                    </form>
+                </article>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+{% endblock %}

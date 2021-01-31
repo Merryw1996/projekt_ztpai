@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Zaloguj{% endblock %}
+
+{% block body %}
+    <section id="offer" style="height: 10%;"></section>
+    <section id="offer" style="box-shadow: 0px 0px 10px 0px  rgba(0,0,0,0.5); height: 30%; ">
+        <h1 style="margin: 0 0 5% 0">Login</h1>
+        <form style="margin: 0 0 0 5%">
+            Username: <input placeholder="Username"></br></br>
+            Password: <input type="password" placeholder="********">
+            <button type="submit">Login</button>
+        </form>
+    </section>
+    <section id="offer" style="box-shadow: 0px 0px 10px 0px  rgba(0,0,0,0.5); height: 30%; margin: 10% 0; ">
+        <h1 style="margin: 0 0 5% 0">Register</h1>
+        <form method="post" action="/register" style="margin: 0 0 0 5%">
+            Username: <input placeholder="Username"></br></br>
+            Password: <input type="password" placeholder="********">
+            <button type="submit">Register</button>
+        </form>
+    </section>
+{% endblock %}

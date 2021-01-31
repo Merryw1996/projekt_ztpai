@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Main{% endblock %}
+
+{% block body %}
+    <section id="offer">
+        <!-- The offer section displays a banner text for promotions -->
+        <h2>OFFER 50%</h2>
+        <p>REALLY AWESOME DISCOUNTS THIS JULY</p>
+        <div class="productRow smallProductRow">
+            {% for i in 0..2  %}
+            <article class="productInfo smallProduct "><!-- Each individual product description -->
+                <div>{{ products[i].getName() }}</div>
+                <p class="price">${{ products[i].getPrice() }}</p>
+                <p class="productContent">{{ products[i].getDescription() }}</p>
+                <form action="/addtocart" method="post">
+                    <input name="pid" type="number" value="{{ products[i].getId() }}" style="display: none"/>
+                    <input type="submit" type="button" value="Add To Cart" class="buyButton">
+                </form>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+    <div id="content">
+        <section class="sidebar">
+            <div id="menubar">
+                <nav class="menu">
+                    <h2>Kategorie</h2>
+                    <hr>
+                    <ul>
+                        <!-- List of links under menuset 1 -->
+                        <li><a href="#" title="Link">Elektronika</a></li>
+                        <li><a href="#" title="Link">Moda</a></li>
+                        <li><a href="#" title="Link">Dom i ogród</a></li>
+                        <li class="notimp"><a href="#" title="Link">Dziecko</a></li>
+                        <li class="notimp"><a href="#" title="Link">Uroda</a></li>
+                        <li class="notimp"><a href="#" title="Link">Zdrowie</a></li>
+                        <li class="notimp"><a href="#" title="Link">Kultura i rozrywka</a></li>
+                        <li class="notimp"><a href="#" title="Link">Sport i turystyka</a></li>
+                        <li class="notimp"><a href="#" title="Link">Motoryzacja</a></li>
+                        <li class="notimp"><a href="#" title="Link">Nieruchomości</a></li>
+                        <li class="notimp"><a href="#" title="Link">Kolekcje i sztuka</a></li>
+                        <li class="notimp"><a href="#" title="Link">Firma i usługi</a></li>
+                        <li class="notimp"><a href="#" title="Link">eBilet.pl</a></li>
+                        <li class="notimp"><a href="#" title="Link">Allegro Lokalnie</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+        <section class="mainContent">
+            {% for i in 1..6 %}
+            <div class="productRow">
+                {% for j in i*3..((i+1)*3-1) %}
+                <article class="productInfo">
+                    <div>{{ products[j].getName() }}</div>
+                    <p class="price">${{ products[j].getPrice() }}</p>
+                    <p class="productContent">{{ products[j].getDescription() }}</p>
+                    <form action="/addtocart" method="post">
+                        <input name="pid" type="number" value="{{ products[j].getId() }}" style="display: none"/>
+                        <input type="submit" type="button" value="Add To Cart" class="buyButton">
+                    </form>
+                </article>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </section>
+    </div>
+{% endblock %}
